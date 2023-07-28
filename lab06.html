@@ -13,12 +13,12 @@
   <body>
     <h1> About Me </h1>
      <div><h3> What I do</h3></div>
-  <p class="data" hidden id="job"> <!-- This is a hidden attribute ID -->
+  <p class="data" hidden id="myjob"> <!-- This is a hidden attribute ID -->
      <p> I am a TA for <sup>Web Mapping</sup></p>
 
     <!-- Add as a button instead. Doesn't do anything until you add JavaScript-->
-    <button id="My Job">
-      Click here t find out!
+    <button id="job">
+      Click here to find out!
     </button>
 
     <!-- Javascript code using jQuery -->
@@ -33,7 +33,7 @@
       // Can refer to button like this since there is only one button $("button") 
       // Or can refer to button with ID to be more specific
       $("button#job").click(
-        function() { // This is an anonymous function (it has no name)
+        function() { 
         $("p#job").toggle();
         }
         );
