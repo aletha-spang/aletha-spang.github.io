@@ -23,13 +23,13 @@
         console.log("Clicked on " + id); // Write to console which letter is clicked on
 
         if(guesses.includes(id)) { // If the guesses includes ID is true
-          $("error_msg").html("You already guessed " + id) // Add message for if someone clicks the same letter twice
+          $("#error_msg").html("You already guessed " + id) // Add message for if someone clicks the same letter twice
       } else {
           guesses = guesses + id; // Otherwise add that id to the guesses
           $("#" + id).css('text-decoration', 'line-through');
           total_guesses = total_guesses - 1; // Remove 1 from the number of total guesses
           if (total_guesses < 0) {
-            $("error_msg").html("You are out of guesses!")
+            $("#error_msg").html("You are out of guesses!")
         } else {
             $("#numleft").html(total_guesses);
             
