@@ -31,7 +31,7 @@
           $("#" + id).css('text-decoration', 'line-through');
           total_guesses = total_guesses - 1; // Remove 1 from the number of total guesses
           if (total_guesses < 0) {
-            $("#error_msg").html("You are out of guesses! The word was " + thing)
+            $("#error_msg").html("You are out of guesses! The word was " + word)
         } else {
             $("#numleft").html(total_guesses);
             
