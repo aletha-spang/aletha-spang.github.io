@@ -14,7 +14,7 @@
     <h1> About Me </h1>
      <div><h3> What I do</h3></div>
 
-    <!-- Add as a button instead. Doesn't do anything until you add JavaScript-->
+    <!-- Here we define the button with a hidden message within. This will not actually do anything until you add the JavaScript function later on-->
     <button id="job">
       Click here to find out!
     </button>
@@ -35,9 +35,15 @@
       // Or can refer to button with ID to be more specific
       $("button#job").click(
         function() { 
-        $("p#job").toggle();
+        $("p#job").toggle(); // Can change this function to be .fadeToggle if wanted, or .hover
         }
         );
+
+      // Let's add the .hover function for the header tags
+      $("h3").hover(
+        function() {
+          console.log("h3 hover;");
+        });
     </script>
    
     <h3 style = "font-family: perpetua, Georgia; background-color: #76D7C4"> Where I live</h3>
