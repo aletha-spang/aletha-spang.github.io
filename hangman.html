@@ -32,7 +32,13 @@
             $("error_msg").html("You are out of guesses!")
         } else {
             $("#numleft").html(total_guesses);
-          }
+            if(word.includes(id)) { // If the word includes that letter
+              var index = word.indexOf(id);// Index is position in string where letter is. First letter starts at 0.
+              console.log("letter " + id + " is at index " + index);
+              blanks = blanks.substr(0, index) + id + // Substring returns all letters up to but not including index specified
+                  blanks.substr(index + 1);
+              $("#word").html(blanks);
+            }
         }
       }
           );
