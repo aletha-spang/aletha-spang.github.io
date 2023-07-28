@@ -15,7 +15,7 @@
          var guesses = "";
           // Add in these two variables:
         var things = ['b a r o q u e', 's i m p l e', 'h i d e', 'c h a n g e s', 'a c t i o n', 'r e s t', 't r y', 't i r e d', 'w a i t', 'g r a p e f r u i t'];
-        var thing = things[Math.floor(Math.random()*things.length)];
+        var thing = things[Math.floor(Math.random()*things.length)]; // This will randomly choose one of the words in list 'things'
 
         $("#word").html(blanks);
           
@@ -32,7 +32,7 @@
           $("#" + id).css('text-decoration', 'line-through');
           total_guesses = total_guesses - 1; // Remove 1 from the number of total guesses
           if (total_guesses < 0) {
-            $("#error_msg").html("You are out of guesses!")
+            $("#error_msg").html("You are out of guesses! The word was " + thing)
         } else {
             $("#numleft").html(total_guesses);
             
