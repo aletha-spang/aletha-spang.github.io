@@ -10,12 +10,11 @@
   
         function(){
          var total_guesses = 10; // Variable for number of guesses users get
-         var word = thing; // The word that people will guess
          var blanks = "_ _ _ _ _"; // Variable for blanks that matches number of letters in words
          var guesses = "";
           // Add in these two variables:
         var things = ['b a r o q u e', 's i m p l e', 'h i d e', 'c h a n g e s', 'a c t i o n', 'r e s t', 't r y', 't i r e d', 'w a i t', 'g r a p e f r u i t'];
-        var thing = things[Math.floor(Math.random()*things.length)]; // This will randomly choose one of the words in list 'things'
+        var word = things[Math.floor(Math.random()*things.length)]; // This will randomly choose one of the words in list 'things'
 
         $("#word").html(blanks);
           
