@@ -3,7 +3,32 @@
   <head>
     <title>Word Guessing Game</title> <!-- Title of our web page (in browser tab) -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- Link to jQuery library -->
+    
+    <!-- Add JavaScript into the header -->
+    <script>
+      $(document).ready( // Function to not run any JavaScript until page is fully loaded
+  
+        function(){
+         var total_guesses = 10; // Variable for number of guesses users get
+         var word = "s h a r k"; // The word that people will guess
+         var blanks = "_ _ _ _ _"; // Variable for blanks that matches number of letters in words
+         var guesses = "";
+          
+        $(".letter").click( // Listen for a mouse click on any of the letter classes
+      function(){ 
+        var id = $(this).attr('id); // Create a variable 'id', which acts upon whatever thing is being currently worked on (span that is clicked on)
+          // Then return the variable called id
+        console.log("Clicked on " + id); // Write to console which letter is clicked on
+
+        if(guess.includes(id)) { // If the guesses includes ID is true
+          $("error_msg").html("You already guessed " + id); // Add message for if someone clicks the same letter twice
+      } else {
+          guesses = guesses + id; // Otherwise add that id to the guesses
+        }
+      );
+    </script>
   </head>
+  
   <body>
     <h1>Guess that Word!</h1>
     <div id="chances">
