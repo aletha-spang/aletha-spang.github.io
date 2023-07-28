@@ -26,12 +26,13 @@
           $("error_msg").html("You already guessed " + id); // Add message for if someone clicks the same letter twice
       } else {
           guesses = guesses + id; // Otherwise add that id to the guesses
-          $("m" + id).css('text-decoration', 'line-through');
+          $("#" + id).css('text-decoration', 'line-through');
           total_guesses = total_guesses - 1; // Remove 1 from the number of total guesses
           if (total_guesses <= 0) {
             $("error_msg").html("You are out of guesses!")
         } else {
             $("#numleft").html(total_guesses);
+            
             if(word.includes(id)) { // If the word includes that letter
               var index = word.indexOf(id);// Index is position in string where letter is. First letter starts at 0.
               console.log("letter " + id + " is at index " + index);
