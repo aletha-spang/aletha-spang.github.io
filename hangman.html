@@ -22,7 +22,7 @@
           // Then return the variable called id
         console.log("Clicked on " + id); // Write to console which letter is clicked on
 
-        if(guess.includes(id)) { // If the guesses includes ID is true
+        if(guesses.includes(id)) { // If the guesses includes ID is true
           $("error_msg").html("You already guessed " + id); // Add message for if someone clicks the same letter twice
       } else {
           guesses = guesses + id; // Otherwise add that id to the guesses
