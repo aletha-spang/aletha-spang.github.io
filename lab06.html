@@ -16,10 +16,28 @@
   <p class="data" hidden id="job"> <!-- This is a hidden attribute ID -->
      <p> I am a TA for <sup>Web Mapping</sup></p>
 
-    <!-- Add as a button instead -->
+    <!-- Add as a button instead. Doesn't do anything until you add JavaScript-->
     <button id="My Job">
       Click here t find out!
     </button>
+
+    <!-- Javascript code using jQuery -->
+    <script>
+       // $("p" <-- this will reference all of the <p> tags in the document
+      // $(#"job") <-- this will reference all ids named 'job' in the document
+      // $(".data") <-- this will reference all ".data" classes
+
+      // Use jQuery to listen for a button click
+      // When the button is clicked, toggle the hidden job message
+
+      // Can refer to button like this since there is only one button $("button") 
+      // Or can refer to button with ID to be more specific
+      $("button#job").click(
+        function() { // This is an anonymous function (it has no name)
+        $("p#job").toggle();
+        }
+        );
+    </script>
    
     <h3 style = "font-family: perpetua, Georgia; background-color: #76D7C4"> Where I live</h3>
     <p> I live in <em> Thetford, VT</em> above some <del>psychologists' offices</del>.</p>
