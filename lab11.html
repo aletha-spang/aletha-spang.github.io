@@ -16,7 +16,7 @@
     html, body {height: 100%; margin: 0; padding: 0; } <!-- Add styling to body of HTML -->
   </style>
 
-  <script src="Eelgrass_Estuaries.geojson"></script>
+  <script src="Rivers.geojson"></script>
     
 <script> // This is where we create the map
 
@@ -32,12 +32,12 @@
         layers: [OpenStreetMap_HOT]
     })
 
-    L.geoJson(eelgrass_geojson,
-              { color: "red",
+    L.geoJson(rivers_geojson,
+              { color: "blue",
                weight: 5,
                onEachfeature: function(feature, layer) {
-                 layer.bindPopup("<b>Eelgrass Estuary Area: " +
-                                 feature.properties.AREA + "</b>");
+                 layer.bindPopup("<b>River Name: " +
+                                 feature.properties.River_Name + "</b>");
                }
               }).addTo(map);
   }
