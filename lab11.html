@@ -35,7 +35,6 @@
     L.geoJson(eelgrass_geojson,
               { color: "red",
                weight: 5,
-               opacity: .5,
                onEachfeature: function(feature, layer) {
                  layer.bindPopup("<b>Eelgrass Estuary Area: " +
                                  feature.properties.AREA + "</b>");
