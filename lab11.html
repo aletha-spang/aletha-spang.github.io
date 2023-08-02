@@ -32,7 +32,11 @@
         layers: [OpenStreetMap_HOT]
     })
 
-    L.geoJson(eelgrass_geojson).addTo(map);
+    L.geoJson(eelgrass_geojson,
+              { color: "blue",
+               weight: 5,
+               opacity: .5
+              }).addTo(map);
   }
 </script>
 
