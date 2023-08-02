@@ -15,6 +15,8 @@
     #map1 { height: 400 px; width: 700 px; } <!-- This can percentage, viewport width, etc. Doesn't have to be pixels -->
     html, body {height: 100%; margin: 0; padding: 0; } <!-- Add styling to body of HTML -->
   </style>
+
+  <script src="Eelgrass_Estuaries.geojson"></script>
     
 <script> // This is where we create the map
 
@@ -31,6 +33,8 @@
         zoom: 15, // Larger numbers = closer to objects
         layers: [OpenStreetMap_HOT]
     })
+
+    L.geoJson(eelgrass_geojson).addTo(map);
   }
 </script>
 
