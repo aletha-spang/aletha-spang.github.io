@@ -17,6 +17,7 @@
   </style>
 
   <script src="NH_Key_Points.geojson"></script>
+  <script src="NH_Designated_Rivers_24k.geojson"></script>
     
 <script> // This is where we create the map
 
@@ -33,6 +34,13 @@
     })
 
     L.geoJson(key_points,
+              { onEachFeature: function(feature, layer) {
+                 layer.bindPopup("<b>Name: " +
+                                 feature.properties.NAME + "</b>");
+               }
+              }).addTo(map);
+        
+    L.geoJson(rivers,
               { onEachFeature: function(feature, layer) {
                  layer.bindPopup("<b>River Name: " +
                                  feature.properties.River_Name + "</b>");
