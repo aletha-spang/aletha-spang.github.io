@@ -12,6 +12,7 @@
                crossorigin=""></script> <!-- Doesn't really matter what version of leafet you use, but good to specify one to lock it in -->
                <!-- Add jQuery library -->
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+               <! 
         
                <!-- Add internal stylesheet. This will give map div a size -->
                  <style>
@@ -29,10 +30,16 @@ var rivers;
 var riversVisible = false;
      
   // First add some objects for base tiles
- var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', 
-     { maxZoom: 19, 
-      attribution: '&copy; < a href= "http://www.openstreetmap.org/copyright"> OpenStreetMap </a>, Tiles courtesy of <a href =  "http://hot.osm.org"> HOT OSM </a>' });
+// var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', 
+  //   { maxZoom: 19, 
+//      attribution: '&copy; < a href= "http://www.openstreetmap.org/copyright"> OpenStreetMap </a>, Tiles courtesy of <a href =  "http://hot.osm.org"> HOT OSM </a>' });
 
+// Add Stadia tiles (formerly known as Stamen)
+var Stadia =  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors',
+            });
+     
   // Add function for line symbology
   function lineSymbology(feature) {
     var length = feature.properties.LENGTH_MI;
@@ -54,7 +61,7 @@ var riversVisible = false;
     var map = L.map('map', { // inside parentheses of L.map() should be name of div for map.
       center: [43.7022, -72.2896],
         zoom: 15, // Larger numbers = closer to objects
-        layers: [OpenStreetMap_HOT]
+        layers: [Stadia]
     })
 
     L.geoJson(key_points,
