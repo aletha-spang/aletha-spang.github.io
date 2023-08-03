@@ -35,15 +35,16 @@
 
     L.geoJson(key_points,
               { onEachFeature: function(feature, layer) {
-                 layer.bindPopup("<b>Name: " +
-                                 feature.properties.NAME + "</b>");
+                  layer.bindPopup("<b>Name: " +
+                  feature.properties.NAME + "</b>");
                }
               }).addTo(map);
         
     L.geoJson(rivers_geojson,
               { onEachFeature: function(feature, layer) {
-                 layer.bindPopup("<b>River Name: " +
-                                 feature.properties.River_Name + "</b>");
+                  layer.bindPopup("<b>River Name: " +
+                  feature.properties.River_Name + "</b><br>" +
+                  feature.properties.LENGTH_MI);
                }
               }).addTo(map);
   }
