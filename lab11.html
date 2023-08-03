@@ -16,7 +16,7 @@
     html, body {height: 100%; margin: 0; padding: 0; } <!-- Add styling to body of HTML -->
   </style>
 
-  <script src="Rivers_take2.geojson"></script>
+  <script src="NH_Key_Points.geojson"></script>
     
 <script> // This is where we create the map
 
@@ -32,7 +32,7 @@
         layers: [OpenStreetMap_HOT]
     })
 
-    L.geoJson(rivers,
+    L.geoJson(key_points,
               { onEachFeature: function(feature, layer) {
                  layer.bindPopup("<b>River Name: " +
                                  feature.properties.River_Name + "</b>");
