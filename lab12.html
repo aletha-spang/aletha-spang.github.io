@@ -25,6 +25,21 @@
  var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {maxZoom: 19, 
       attribution: '&copy; < a href= "http://www.openstreetmap.org/copyright"> OpenStreetMap </a>, Tiles courtesy of <a href =  "http://hot.osm.org"> HOT OSM </a>' });
 
+  // Add function for line symbology
+  function lineSymbology(feature) {
+    var length = feature.properties.LENGTH_MI;
+    var lineWidth = 2;
+    var lineColor = "#9ecae1";
+
+    if (length > 100) { lineColor = "#2b8cbe"; lineWidth = 4; }
+    if (length < 100) { lineColor = "#deebf7"; lineWidth = 1; }
+
+    return {
+      color: lineColor,
+      weight: lineWidth,
+      opacity: 1
+    };
+  
   // Then initialize the map itself
   function initialize() {
     var map = L.map('map1', { // inside parentheses of L.map() should be name of div for map.
@@ -41,7 +56,8 @@
               }).addTo(map);
         
     L.geoJson(rivers_geojson,
-              { onEachFeature: function(feature, layer) {
+              { style: lineSymbology,
+                onEachFeature: function(feature, layer) {
                   layer.bindPopup("<b>River Name: " +
                   feature.properties.River_Name + "</b><br>" +
                   feature.properties.LENGTH_MI);
