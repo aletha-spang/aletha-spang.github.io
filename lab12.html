@@ -23,6 +23,9 @@
     
 <script> // This is where we create the map
 
+var rivers;
+var riversVisible = false;
+     
   // First add some objects for base tiles
  var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', 
      { maxZoom: 19, 
@@ -59,15 +62,25 @@
                }
               }).addTo(map);
         
-    L.geoJson(rivers_geojson,
+    rivers = L.geoJson(rivers_geojson,
               { style: lineSymbology,
                 onEachFeature: function(feature, layer) {
                   layer.bindPopup("<b>River Name: " +
                   feature.properties.River_Name + "</b><br>" +
                   "Length: " + feature.properties.LENGTH_MI);
                }
-              }).addTo(map);
-        }
+              });
+       
+       // Add function that listens for when button is toggled
+       $("#toggleRivers").click( function() {
+            if (riversVisible) {
+                 riversVisible = false;
+                 rivers.removeFrom(map);
+            } else {
+                 riversVisible = true;
+                 rivers.addTo(map);
+            }
+        })
     </script> 
   </head>
 <body onload="initialize()"> <!-- This is similar to document ready- only run once page is loaded -->
