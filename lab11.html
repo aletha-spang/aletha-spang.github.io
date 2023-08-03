@@ -33,8 +33,7 @@
     })
 
     L.geoJson(rivers,
-              { color: "red",
-               onEachFeature: function(feature, layer) {
+              { onEachFeature: function(feature, layer) {
                  layer.bindPopup("<b>River Name: " +
                                  feature.properties.River_Name + "</b>");
                }
