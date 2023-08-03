@@ -60,9 +60,9 @@
                 onEachFeature: function(feature, layer) {
                   layer.bindPopup("<b>River Name: " +
                   feature.properties.River_Name + "</b><br>" +
-                  feature.properties.LENGTH_MI);
+                  "Length: " + feature.properties.LENGTH_MI);
                }
-              }).addTo(map);
+              }).addTo(map)
   }
     </script> 
   </head>
