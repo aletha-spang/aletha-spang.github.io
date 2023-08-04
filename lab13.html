@@ -104,14 +104,14 @@ var riversVisible = true;
 
 	// Read in Rivers geojson
        
-	   	 rivers = L.geoJson(response.responseJSON,
+	   	 var rivers = L.geoJson(response.responseJSON,
 	              { style: lineSymbology,
 	                onEachFeature: function(feature, layer) {
 	                  layer.bindPopup("<b>River Name: " +
 	                  feature.properties.River_Name + "</b><br>" +
 	                  "Length: " + feature.properties.LENGTH_MI);
 	               }
-	              });
+	              }).addTo(map);
 
 	// Create function that toggles hidden rivers button
 	$("#toggleTrails").show();
