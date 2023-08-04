@@ -19,13 +19,11 @@
                     #button { padding: 10px; background: #f3d1c9; } <!-- I can't get this button styling to actually apply -->
                  </style>
 
-       <script src="NH_Key_Points.geojson"></script>
-       <script src="NH_Designated_Rivers_24K.geojson"></script>
     
 <script> // This is where we create the map
 
 var rivers;
-var riversVisible = false;
+var riversVisible = true;
      
 // First add some objects for base tiles
      var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', 
@@ -38,7 +36,12 @@ var riversVisible = false;
                  });
 
      var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        attribution: '© OpenStreetMap contributors, © CartoDB',
+        subdomains: 'abcd',
+        maxZoom: 19
+});
+     var CartoDB_Positron = L.tileLayer(L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors, © CartoDB',
         subdomains: 'abcd',
         maxZoom: 19
 });
@@ -78,7 +81,11 @@ var riversVisible = false;
                   feature.properties.NAME + "</b>");
                }
               }).addTo(map);
-        
+
+
+    
+
+       
     rivers = L.geoJson(rivers_geojson,
               { style: lineSymbology,
                 onEachFeature: function(feature, layer) {
