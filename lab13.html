@@ -80,11 +80,21 @@ var riversVisible = true;
                       }
        L.control.layers(baseMaps).addTo(map);
 
-// Run Ajax function
+// Run Ajax function for rivers layer
 	var response = $.ajax({
 		url: "NH_Designated_Rivers_24K_AJAX.geojson", // Make sure that you have reuploaded the geojson to Github after editing out beginning
 		dataType: "json",
 		success: console.log("rivers data loaded!"),
+		error: function(xhr) {
+			alert(xhr.statusText);
+		}
+	});
+
+// Run Ajax function for points layer
+	  var response = $.ajax({
+		url: "NH_Key_Points_AJAX.geojson", // Make sure that you have reuploaded the geojson to Github after editing out beginning
+		dataType: "json",
+		success: console.log("cultural points data loaded!"),
 		error: function(xhr) {
 			alert(xhr.statusText);
 		}
