@@ -43,12 +43,12 @@ var riversVisible = false;
         maxZoom: 19
 });
 
-      var CartoDB_Positron = L.tileLayer(L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors, © CartoDB',
-        subdomains: 'abcd',
-        maxZoom: 19
-}));
-     
+     var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
   // Add function for line symbology
   function lineSymbology(feature) {
     var length = feature.properties.LENGTH_MI;
