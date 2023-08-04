@@ -2,17 +2,21 @@
 <html>
      <head>
           <title> Hello Campus! </title>
-            <!-- Add a CSS stylesheet for Leaflet-->
+            
+	     <!-- Add a CSS stylesheet for Leaflet-->
               <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
                integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
                crossorigin=""/>
-               <!-- Add script library for Leaflet -->
+               
+	     <!-- Add script library for Leaflet -->
                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
                crossorigin=""></script> <!-- Doesn't really matter what version of leafet you use, but good to specify one to lock it in -->
-               <!-- Add jQuery library -->
+               
+	     <!-- Add jQuery library -->
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-               <!-- Add internal stylesheet. This will give map div a size -->
+              
+	     <!-- Add internal stylesheet. This will give map div a size -->
                  <style>
                     #map { height: 400px; width: 500px; } <!-- This can percentage, viewport width, etc. Doesn't have to be pixels -->
                     html, body {height: 100%; margin: 0; padding: 0; } <!-- Add styling to body of HTML -->
@@ -39,12 +43,12 @@ var riversVisible = true;
         attribution: '© OpenStreetMap contributors, © CartoDB',
         subdomains: 'abcd',
         maxZoom: 19
-});
+		});
       var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	subdomains: 'abcd',
 	maxZoom: 20
-});
+		});
      
   // Add function for line symbology
   function lineSymbology(feature) {
@@ -76,26 +80,42 @@ var riversVisible = true;
                       }
        L.control.layers(baseMaps).addTo(map);
 
-    L.geoJson(key_points,
-              { onEachFeature: function(feature, layer) {
-                  layer.bindPopup("<b>Name: " +
-                  feature.properties.NAME + "</b>");
-               }
-              }).addTo(map);
+// Run Ajax function
+	var response = $.ajax({
+		url: "NH_Designated_Rivers_24K_AJAX.geojson", // Make sure that you have reuploaded the geojson to Github after editing out beginning
+		dataType: "json",
+		success: console.log("rivers data loaded!"),
+		error: function(xhr) {
+			alert(xhr.statusText);
+		}
+	});
 
+// Add When function -> what happens once Ajax function runs
+	  $.when(response).done(function() {
+		  
+		
+	// Read in Cultural and Historical Features geojson
+		 var points = L.geoJson(key_points,
+	              { onEachFeature: function(feature, layer) {
+	                  layer.bindPopup("<b>Name: " +
+	                  feature.properties.NAME + "</b>");
+	               }
+	              }).addTo(map);
 
-    
-
+	// Read in Rivers geojson
        
-    rivers = L.geoJson(rivers_geojson,
-              { style: lineSymbology,
-                onEachFeature: function(feature, layer) {
-                  layer.bindPopup("<b>River Name: " +
-                  feature.properties.River_Name + "</b><br>" +
-                  "Length: " + feature.properties.LENGTH_MI);
-               }
-              });
-       
+	   	 rivers = L.geoJson(response.responseJSON,
+	              { style: lineSymbology,
+	                onEachFeature: function(feature, layer) {
+	                  layer.bindPopup("<b>River Name: " +
+	                  feature.properties.River_Name + "</b><br>" +
+	                  "Length: " + feature.properties.LENGTH_MI);
+	               }
+	              });
+
+	// Create function that toggles hidden rivers button
+	$("#toggleTrails").show();
+	       
        // Add function that listens for when button is toggled
        $("#toggleRivers").click( function() {
             if (riversVisible) {
@@ -113,7 +133,7 @@ var riversVisible = true;
   <h1> Hello Campus!</h1>
   <div id="map"></div> <!-- This creates a div that will house our leaflet map. Can make multiple divs if need multiple maps -->
   <div id="button">
-    <button id="toggleRivers">Toggle the Rivers Layer.</button>
+    <button id="toggleRivers" hidden>Toggle the Rivers Layer.</button>
   </div> <!-- Add button to toggle layers on and off
 </body>
 </html>
