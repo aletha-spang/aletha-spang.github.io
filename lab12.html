@@ -42,6 +42,12 @@ var riversVisible = false;
         subdomains: 'abcd',
         maxZoom: 19
 });
+
+      var CartoDB_Positron = L.tileLayer(L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors, © CartoDB',
+        subdomains: 'abcd',
+        maxZoom: 19
+});
      
   // Add function for line symbology
   function lineSymbology(feature) {
@@ -64,11 +70,12 @@ var riversVisible = false;
     var map = L.map('map', { // inside parentheses of L.map() should be name of div for map.
       center: [43.7022, -72.2896],
         zoom: 15, // Larger numbers = closer to objects
-         layers: [CartoDB_DarkMatter]
+         layers: [CartoDB_Positron]
     });
 
        var baseMaps = { "OSM": OpenStreetMap_HOT,
-                       "Carto Dark Matter": CartoDB_DarkMatter
+                       "Carto Dark Matter": CartoDB_DarkMatter,
+                        "Carto Positron": CartoDB_Positron
                       }
        L.control.layers(baseMaps).addTo(map);
 
