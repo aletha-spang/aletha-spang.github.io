@@ -18,6 +18,8 @@
 
   <script src="NH_Key_Points.geojson"></script>
   <script src="NH_Designated_Rivers_24K.geojson"></script>
+
+  <script src="NH_Community_Center_Areas.geojson"></script>
     
 <script> // This is where we create the map
 
@@ -46,6 +48,8 @@
                                  feature.properties.River_Name + "</b>");
                }
               }).addTo(map);
+
+    L.geoJson(nhcc).addTo(map);
   }
 </script>
 
