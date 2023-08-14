@@ -105,15 +105,7 @@ function pointSymbology(feature) {
                   layer.bindPopup("<b>Name: " +
                   feature.properties.NAME + "</b>");
                }
-	         pointToLayer: function (feature, latlng) { 
-                          return L.circleMarker(latlng, {
-                            
-                         
-                          weight: 1,
-                          opacity: 1,
-                          fillOpacity: 1
-              });
-              },
+	        
               }).addTo(map);
         
     rivers = L.geoJson(rivers_geojson,
