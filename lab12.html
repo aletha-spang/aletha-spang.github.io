@@ -69,6 +69,20 @@ var riversVisible = false;
       opacity: 1
     }
   };
+
+// And a function for point symbology
+function pointSymbology(feature) {
+    var capacity = feature.properties.CAPACITY;
+    var pointColor = "#9ecae1";
+
+    if (capacity > 100) { pointColor = "#2b8cbe"; }
+    if (capacity < 100) { pointColor = "#deebf7"; }
+
+    return {
+      color: pointColor,
+      opacity: 1
+    }
+  };
   
   // Then initialize the map itself
   function initialize() {
@@ -86,7 +100,8 @@ var riversVisible = false;
        L.control.layers(baseMaps).addTo(map);
 
     L.geoJson(key_points,
-              { onEachFeature: function(feature, layer) {
+              { style: pointSymbology,
+	       onEachFeature: function(feature, layer) {
                   layer.bindPopup("<b>Name: " +
                   feature.properties.NAME + "</b>");
                }
