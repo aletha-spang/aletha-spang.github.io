@@ -31,7 +31,17 @@
         zoom: 15, // Larger numbers = closer to objects
         layers: [OpenStreetMap_HOT]
     })
-L.geoJson(trails2_geojson).addTo(map);
+L.geoJson(trails2_geojson {
+  onEachFeature: function(feature, layer) {
+         layer.bindPopup("<b>Name: " + feature.properties.TRAILNAME + "</b>");
+}
+}).addTo(map);
+      L.geoJson(nhcc, {
+      onEachFeature: function(feature, layer) {
+        layer.bindPopup("<b>Name: " + feature.properties.NAME + "</b>");
+      }
+        }  
+             ).addTo(map);
 
       
   }
