@@ -21,14 +21,44 @@
 	
 <!-- this is for all the map layers-->	
   <script>
-function polygonstyle(feature) {
+function waterclassstyle(feature) {
 	return{
 		fillColor: "red",
 		color: "black",
 		weight: '1',
 	 	fillOpacity: 1
 	};
-				}	
+				};
+function riverscientiststyle(feature) {
+	return{
+		fillColor: "blue",
+		color: "black",
+		weight: '1',
+	 	fillOpacity: 1
+	};
+	function watershedstyle(feature) {
+	return{
+		fillColor: "blue",
+		color: "black",
+		weight: '1',
+	 	fillOpacity: 1
+	};
+	function waterbodiesstyle(feature) {
+	return{
+		fillColor: "blue",
+		color: "black",
+		weight: '1',
+	 	fillOpacity: 1
+	};
+				};
+		function groundwaterstyle(feature) {
+	return{
+		fillColor: "blue",
+		color: "black",
+		weight: '1',
+	 	fillOpacity: 1
+	};
+				};
    var waterclasslayer;
    var waterclassvisible = true;
    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
@@ -87,29 +117,20 @@ function polygonstyle(feature) {
 	}).addTo(map);
 	    
       L.geoJson(riverscientist_geojson, 
-		{color: "blue",
-	        weight: 2, 
-	        opacity: 0.8,
-	        onEachFeature: function(feature, layer) 
-			// {layer.bindPopup("<b>Conneticut River Historic Points: " +feature.properties.NAME + "</b>");
-   //      		}
+		{style: riverscientiststyle,
+	        onEachFeature: function(feature, layer) {
+			layer.bindPopup("<b>River Scientist Name: " + feature.properties.ABNAME + "</b>");
+   	}
       		}).addTo(map);
 
 	  L.geoJson(watershed_geojson, 
-		{color: "blue",
-	        weight: 2, 
-	        opacity: 0.8,
-	        onEachFeature: function(feature, layer) 
-			// {layer.bindPopup("<b>Conneticut River Historic Points: " +feature.properties.NAME + "</b>");
-     		// }
-      		}).addTo(map);
+		{style: watershedstyle,
+      		).addTo(map);
 
 	  L.geoJson(groundwater_geojson, 
-		{color: "blue",
-	        weight: 2, 
-	        opacity: 0.8,
-	        onEachFeature: function(feature, layer) 
-			// {layer.bindPopup("<b>Conneticut River Historic Points: " +feature.properties.NAME + "</b>");
+		{style: groundwaterstyle
+	     //   onEachFeature: function(feature, layer) 
+			// {layer.bindPopup("<b>Groundwater System Name: " + feature.properties.SystemName + "</b>");
    //      		}
       		}).addTo(map);
 
@@ -117,8 +138,8 @@ function polygonstyle(feature) {
 		{color: "blue",
 	        weight: 2, 
 	        opacity: 0.8,
-	        onEachFeature: function(feature, layer) 
-			// {layer.bindPopup("<b>Conneticut River Historic Points: " +feature.properties.NAME + "</b>");
+	     //   onEachFeature: function(feature, layer) 
+			// {layer.bindPopup("<b>Conneticut River Historic Points: " + feature.properties.NAME + "</b>");
    //      		}
       		}).addTo(map);
     
