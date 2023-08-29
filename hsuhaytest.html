@@ -70,13 +70,6 @@ function riverscientiststyle(feature) {
                                        {maxZoom: 20,
 	                                attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
                                        });
-  var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}',
-				       {attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-						subdomains: 'abcd',
-						minZoom: 0,
-						maxZoom: 20,
-						ext: 'png'
-				       });
 
 
     $(document).ready(function()
@@ -88,7 +81,7 @@ function riverscientiststyle(feature) {
       
         });
 	OpenStreetMap_HOT.addTo(map);
-	var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS, "Monochrome" : Stamen_TonerLite};
+	var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS};
     	L.control.layers(baseMaps).addTo(map);
 
 // "303(d)_lake_pond.geojson"
@@ -108,12 +101,12 @@ function riverscientiststyle(feature) {
 	$.when(response).done(function() {
 	
 		waterclasslayer =  L.geoJson(response.responseJSON,
-      		{style: polygonstyle,
+      		{ style: waterclassstyle,
         	onEachFeature: function(feature, layer) {
 		layer.bindPopup("<b>Water Classification Name: " + feature.properties.Name + "</b><br>"
                       +"Status: " + feature.properties.Description);
                }
-	}
+		}
 		).addTo(map);
 	    
       L.geoJson(riverscientist_geojson, 
@@ -135,14 +128,14 @@ function riverscientiststyle(feature) {
       		}).addTo(map);
 
 	  L.geoJson(waterbodies, 
-		{color: "blue",
-	        weight: 2, 
-	        opacity: 0.8,
+		{style: waterbodiesstyle
 	     //   onEachFeature: function(feature, layer) 
 			// {layer.bindPopup("<b>Conneticut River Historic Points: " + feature.properties.NAME + "</b>");
    //      		}
       		}).addTo(map);
-    
+		
+$("#togglewaterclass").show();
+		
       $("#togglewaterclass").click( function() {
         if (waterclassvisible) {
           waterclassvisible = false;
