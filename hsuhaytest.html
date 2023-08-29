@@ -77,10 +77,10 @@ function polygonstyle(feature) {
 			     });
 	$.when(response).done(function() {
 	waterclasslayer =  L.geoJson(response.responseJSON,
-      		{style: polygonstyle}
-        	onEachFeature: function(feature, layer) 
-		{layer.bindPopup("<b>Water Classification Name: " + feature.properties.Name + "</b><br>"
-                      +"Status: " + feature.properties.Description );
+      		{style: polygonstyle,
+        	onEachFeature: function(feature, layer) {
+		layer.bindPopup("<b>Water Classification Name: " + feature.properties.Name + "</b><br>"
+                      +"Status: " + feature.properties.Description);
                }
 	}
 		)
