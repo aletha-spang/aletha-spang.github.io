@@ -79,9 +79,10 @@ function polygonstyle(feature) {
 	waterclasslayer =  L.geoJson(response.responseJSON,
       		{style: polygonstyle}
         	onEachFeature: function(feature, layer) 
-		// {layer.bindPopup("<b>Water Classification Name: " + feature.properties.Name + "</b><br>"
-  //                        +"Status: " + feature.properties.Description );
-  //               }
+		{layer.bindPopup("<b>Water Classification Name: " + feature.properties.Name + "</b><br>"
+                      +"Status: " + feature.properties.Description );
+               }
+	}
 		)
 	}).addTo(map);
 	    
@@ -100,7 +101,7 @@ function polygonstyle(feature) {
 	        opacity: 0.8,
 	        onEachFeature: function(feature, layer) 
 			// {layer.bindPopup("<b>Conneticut River Historic Points: " +feature.properties.NAME + "</b>");
-   //      		}
+     		// }
       		}).addTo(map);
 
 	  L.geoJson(groundwater_geojson, 
