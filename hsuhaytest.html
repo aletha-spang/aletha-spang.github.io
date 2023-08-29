@@ -21,6 +21,7 @@
 	
 <!-- this is for all the map layers-->	
   <script>
+ $(document).ready(function() {
 function waterclassstyle(feature) {
 	return{
 		fillColor: "red",
@@ -71,24 +72,15 @@ function riverscientiststyle(feature) {
 	                                attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
                                        });
 
-
-    $(document).ready(function()
-{
       var map = L.map('map',
 	{
         center: [44.5588, -72.5778],
         zoom: 8,
-      
+      	layers: [OpenStreetMap_HOT]
         });
-	OpenStreetMap_HOT.addTo(map);
+	
 	var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS};
     	L.control.layers(baseMaps).addTo(map);
-
-// "303(d)_lake_pond.geojson"
-// "303(d)_watershed.geojson"
-// "Ground_Water_SPA.geojson"
-// "River_Scientist_Regions.geojson"
-
 	
 	var response= $.ajax({
 		url: "VT_Water_Classifications.geojson",
@@ -148,7 +140,8 @@ $("#togglewaterclass").show();
       					      })
 	
       					})
-})
+}})
+	  
 	  
   </script>
 </head>
