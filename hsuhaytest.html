@@ -106,15 +106,15 @@ function riverscientiststyle(feature) {
 				     }
 			     });
 	$.when(response).done(function() {
-	waterclasslayer =  L.geoJson(response.responseJSON,
+	
+		waterclasslayer =  L.geoJson(response.responseJSON,
       		{style: polygonstyle,
         	onEachFeature: function(feature, layer) {
 		layer.bindPopup("<b>Water Classification Name: " + feature.properties.Name + "</b><br>"
                       +"Status: " + feature.properties.Description);
                }
 	}
-		)
-	}).addTo(map);
+		).addTo(map);
 	    
       L.geoJson(riverscientist_geojson, 
 		{style: riverscientiststyle,
