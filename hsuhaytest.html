@@ -37,12 +37,14 @@ function riverscientiststyle(feature) {
 		weight: '1',
 	 	fillOpacity: 1
 	};
+};
 	function watershedstyle(feature) {
 	return{
 		fillColor: "blue",
 		color: "black",
 		weight: '1',
 	 	fillOpacity: 1
+	};
 	};
 	function waterbodiesstyle(feature) {
 	return{
@@ -125,8 +127,6 @@ function riverscientiststyle(feature) {
 			// {layer.bindPopup("<b>Conneticut River Historic Points: " + feature.properties.NAME + "</b>");
    //      		}
       		}).addTo(map);
-		
-$("#togglewaterclass").show();
 		
       $("#togglewaterclass").click( function() {
         if (waterclassvisible) {
